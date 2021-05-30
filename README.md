@@ -91,3 +91,56 @@
 - You basically need to construct a new object or array and immediately fill it with the properties or elements of the old object or array.
 - You got multiple ways of doing this - also depending on which kind of JavScript version you are using(during developmennt)
 
+### # Here are the two most popular approaches for arrays:
+
+#### 1) Use the **slice()** method
+
+- **slice()** is a standard array method provided by JavaScript.
+
+```js
+  var hobbies = ['Sports', 'Cooking']
+  var copiedHobbies = hobbies.slice()
+```
+
+- It basically returns a new array which contains all elements of the old element, starting at the starting index you pass(and then up to the max number of elements you defined). If you just slide(), without arguments, you get a new array with all elements of the old array.
+
+#### 2) Use spread operator
+
+- If you're using ES6+, you can use **spread operator**
+
+```js
+  var hobbies = ['Sports', 'Cooking']
+  var copiedHobbies = [...hobbies]
+```
+
+- Here, you also create a new array(manually, by using [] ) and you then use the spread operator ( ... ) to "pull all elements of the old array out" and add them to the new array.
+
+### # For objects
+
+#### 1) Object.assign()
+
+- You can use the **Object.assign()** syntax.
+  
+```js
+  var person = { name: 'Max' }
+  var copiedPerson = Object.assign({},person)
+```
+
+- This syntax creates a new object (the {} part) and assigns all properties of the old object (the second argument) to that newly created one. This creates a  copy.
+  
+#### 2)
+
+- Just as with arrays, you can also use the spread operator on objects.
+
+```js
+  var person = { name: 'Max'}
+  var copiedPerson = { ...person }
+```
+
+### # Deep Clones
+
+- Now you how to clone arrays and objects.
+- Here's one super-important thing to note though: You're not creating deep clones with either approach!
+- If you cloned array contains nested arrays or objects as elements or if your object contains properties that hold arrays or other objects, then these nested arrays and obejct will **not** have been cloned!
+- You still have the old pointers,pointing to the old nested arrays/objects!
+- You'd have to manually clone every layer that you plan on working with. If you don't plan on changing these nested arrays or objects though, you don't need to clone them.
